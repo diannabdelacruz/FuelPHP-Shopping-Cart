@@ -88,7 +88,7 @@ class Cart
 
         if (isset($items['id'])) // jednoduche pole = jeden produkt
         {
-            if (static::_add($items) == TRUE)
+            if (static::_add($items) === TRUE)
             {
                 static::_save_cart();
                 return TRUE;
@@ -100,7 +100,7 @@ class Cart
             {
                 if (is_array($val) AND isset($val['id']))
                 {
-                    if (static::_add($val) == TRUE)
+                    if (static::_add($val) === TRUE)
                     {
                         static::_save_cart();
                         return TRUE;
@@ -183,7 +183,7 @@ class Cart
         if (isset($items['rowid'])) // jednoduche pole = upravujeme jeden produkt 
         {
 
-            if (static::_update($items) == TRUE)
+            if (static::_update($items) === TRUE)
             {
                 static::_save_cart();
                 return TRUE;
@@ -195,7 +195,7 @@ class Cart
             {
                 if (is_array($val) AND isset($val['rowid']) AND isset($val['qty']))
                 {
-                    if (static::_update($val) == TRUE)
+                    if (static::_update($val) === TRUE)
                     {
                         static::_save_cart();
                         return TRUE;
@@ -244,16 +244,16 @@ class Cart
 
     public static function delete($row_id=NULL, $qty=TRUE)
     {
-        if ($row_id != NULL && isset(static::$items[$row_id]['qty']) && static::$items[$row_id]['qty'])
+        if ($row_id != NULL and isset(static::$items[$row_id]['qty']) and static::$items[$row_id]['qty'])
         {
             // ak je pocet kusov 1 a menej || qty je nastavene na TRUE zmazeme tovar z kosika uplne
-            if (static::$items[$row_id]['qty'] < 2 || $qty == TRUE)
+            if (static::$items[$row_id]['qty'] < 2 or $qty === TRUE)
             {
                 unset(static::$items[$row_id]);
             }
             else
             {
-                if (!is_numeric($qty) || $qty < 1)
+                if (!is_numeric($qty) or $qty < 1)
                 {
                     return FALSE;
                 }
@@ -285,11 +285,11 @@ class Cart
 
         foreach (static::$items as $key => $val)
         {
-            if (!is_array($val) OR !isset($val['price']) OR !isset($val['qty']))  // uistime sa ci su zadane vsetky povinne polozky
+            if (!is_array($val) or !isset($val['price']) or !isset($val['qty']))  // uistime sa ci su zadane vsetky povinne polozky
             {
                 continue;
             }
-            $total += ( $val['price'] * $val['qty'] );
+            $total += ($val['price'] * $val['qty']);
             $total_qty += $val['qty'];
         }
 
@@ -310,7 +310,7 @@ class Cart
 
     public static function in_cart($row_id)
     {
-        if (isset(static::$items[$row_id]) && static::$items[$row_id])
+        if (isset(static::$items[$row_id]) and static::$items[$row_id])
         {
             return true;
         }
