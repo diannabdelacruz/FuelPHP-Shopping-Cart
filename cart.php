@@ -1,6 +1,6 @@
 <?php
 
-namespace Fuel\Core;
+namespace Cart;
 
 /**
  * FuelPHP Shopping Cart class
