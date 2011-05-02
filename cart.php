@@ -1,6 +1,6 @@
 <?php
 
-namespace Cart;
+namespace Ecommerce;
 
 /**
  * FuelPHP Shopping Cart class
@@ -21,7 +21,7 @@ class Cart
     protected static $total_qty = 0; // pocet kusov spolu (z jedneho produktu mozete mat v kosiku viac kusov)
     protected static $total_price = 0; // cena spolu
 
-    private static function _init()
+    public static function _init()
     {
         $cart = \Session::get('fuel_cart');
         if ($cart !== NULL)
@@ -319,16 +319,3 @@ class Cart
     }
 
 }
-
-//    public static function item_by_id($id)
-//    {
-//        foreach (static::$items as $item)
-//        {
-//            if (\Arr::element($item, "id") == $id)
-//            {
-//                return $item;
-//                break;
-//            }
-//        }
-//        return array();
-//    }
