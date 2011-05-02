@@ -312,7 +312,7 @@ class Cart
     {
         if (isset(static::$items[$row_id]) and static::$items[$row_id])
         {
-            return true;
+            return static::$items[$row_id]['qty'];
         }
 
         return false;
